@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Calculadora Kotling</string>
+    <string name="mensajeMemoria">Resultado guardado en memoria: </string>
+</resources>
