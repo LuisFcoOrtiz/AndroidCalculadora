@@ -14,6 +14,8 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
+    var RESULTADOG = "resultadog"
+    var MEMORIAG = "memoriag"
     var queHacer=0  //Variable para saber que hacer
     var valor1=0
     var valor2=0
@@ -24,8 +26,25 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+//        Button botonMemoria = fin
+        if (savedInstanceState != null) {
+            resultado=savedInstanceState.getInt("resultadog")
+            memoria=savedInstanceState.getInt("memoriag")
+            textResultado.text=resultado.toString()
+        }//Devuelve el estado de variables en caso de cambio de actividad
+
 
     }//fin on create
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        // Save our own state now
+        if (outState != null) {
+            outState.putInt(RESULTADOG,resultado)
+            outState.putInt(MEMORIAG, memoria)
+        }
+        // Make sure to call the super method so that the states of our views are saved
+        super.onSaveInstanceState(outState)
+    }//Guarda el estado de las variables
 
     fun numero(v: View) {
         val valorNumerico = findViewById<Button>(v.id)
@@ -47,6 +66,7 @@ class MainActivity : AppCompatActivity() {
         resultado=0                 //Pone el resultado a 0
         queHacer=0                  //No hace nada resetea
     }//Borra toda la caja de texto
+
     fun deshacerText(v: View) {
         val cadena = textResultado.text.toString()
         if (cadena.length>0) {
@@ -94,7 +114,7 @@ class MainActivity : AppCompatActivity() {
 
     fun guardarMemoria(v: View) {
         memoria = resultado
-        mostrarMensaje("Resultado guardado en memoria: ")
+        mostrarMensaje("Resultado guardado en memoria: "+resultado)
     }//Asigna el resultado a la memoria
 
     fun devolverMemoria(v: View) {
@@ -103,15 +123,15 @@ class MainActivity : AppCompatActivity() {
 
     fun mostrarMensaje(mensaje: String) {
         val context = applicationContext
-        val text = mensaje + resultado
+        val text = mensaje
         val duration = Toast.LENGTH_SHORT
         val toast = Toast.makeText(context, text, duration)
         toast.show()
     }//Muestra mensaje de Toast
 
     fun borrarMemoria(v: View) {
+        mostrarMensaje("Memoria eliminada: "+memoria)
         memoria = 0
-        mostrarMensaje("Memoria eliminada: ")
     }//Borra la memoria
 
 }//Fin de clase
