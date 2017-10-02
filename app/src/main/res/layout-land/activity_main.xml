@@ -26,7 +26,7 @@
         <TextView
             android:id="@+id/textResultado"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="wrap_content"
             android:background="@android:color/background_light"
             android:text=""
             android:textAlignment="textEnd"
@@ -34,7 +34,8 @@
 
         <TableLayout
             android:layout_width="516dp"
-            android:layout_height="231dp">
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -205,19 +206,21 @@
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="88dp"
-        android:layout_height="357dp"
+        android:layout_height="359dp"
+        android:layout_marginTop="0dp"
         android:background="@android:color/background_dark"
+        android:onClick="abrirLayout"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout2"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        tools:layout_editor_absoluteY="0dp">
 
         <Button
             android:id="@+id/buttonGitHub"
             android:layout_width="match_parent"
-            android:layout_height="38dp"
+            android:layout_height="wrap_content"
             android:background="@android:drawable/ic_menu_edit"
             android:onClick="irGitHub"
             android:singleLine="true" />

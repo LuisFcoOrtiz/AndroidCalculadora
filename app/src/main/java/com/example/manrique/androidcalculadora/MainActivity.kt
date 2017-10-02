@@ -1,11 +1,14 @@
 package com.example.manrique.androidcalculadora
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.activity_main.*
 import android.widget.Toast
 
@@ -45,6 +48,24 @@ class MainActivity : AppCompatActivity() {
         // Make sure to call the super method so that the states of our views are saved
         super.onSaveInstanceState(outState)
     }//Guarda el estado de las variables
+
+    /* TRABAJANDO EN UN LAYOUT VISIBLE ONO
+    fun abrirLayout(v: View) {
+        /*var linearLayout3 = findViewById<LinearLayout>(R.id.linearLayout3)
+        linearLayout3.visibility=View.*/
+        v.setVisibility(View.VISIBLE);
+        v.setAlpha(0.0f);
+        v.animate()
+                .translationY(0)
+                .alpha(0.0f)
+                .setListener(AnimatorListenerAdapter() {
+
+                    override fun onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        v.setVisibility(View.GONE);
+                    }
+                });
+    }*/
 
     fun numero(v: View) {
         val valorNumerico = findViewById<Button>(v.id)
