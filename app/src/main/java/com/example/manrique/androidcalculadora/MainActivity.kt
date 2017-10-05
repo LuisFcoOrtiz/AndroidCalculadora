@@ -7,12 +7,9 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
+import android.widget.*
 import kotlinx.android.synthetic.main.activity_main.*
-import android.widget.Toast
-
-
+import com.example.manrique.androidcalculadora.R.id.textResultado
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-//        Button botonMemoria = fin
+        //Button botonMemoria = fin
         if (savedInstanceState != null) {
             resultado=savedInstanceState.getInt("resultadog")
             memoria=savedInstanceState.getInt("memoriag")
@@ -40,32 +37,14 @@ class MainActivity : AppCompatActivity() {
     }//fin on create
 
     override fun onSaveInstanceState(outState: Bundle?) {
-        // Save our own state now
+        // Guarda el estado de la vista en variables (principio de clase)
         if (outState != null) {
             outState.putInt(RESULTADOG,resultado)
             outState.putInt(MEMORIAG, memoria)
         }
-        // Make sure to call the super method so that the states of our views are saved
+        //Llama al metodo de la clase super para guardar el estado de la View
         super.onSaveInstanceState(outState)
     }//Guarda el estado de las variables
-
-    /* TRABAJANDO EN UN LAYOUT VISIBLE ONO
-    fun abrirLayout(v: View) {
-        /*var linearLayout3 = findViewById<LinearLayout>(R.id.linearLayout3)
-        linearLayout3.visibility=View.*/
-        v.setVisibility(View.VISIBLE);
-        v.setAlpha(0.0f);
-        v.animate()
-                .translationY(0)
-                .alpha(0.0f)
-                .setListener(AnimatorListenerAdapter() {
-
-                    override fun onAnimationEnd(Animator animation) {
-                        super.onAnimationEnd(animation);
-                        v.setVisibility(View.GONE);
-                    }
-                });
-    }*/
 
     fun numero(v: View) {
         val valorNumerico = findViewById<Button>(v.id)
@@ -154,5 +133,28 @@ class MainActivity : AppCompatActivity() {
         mostrarMensaje("Memoria eliminada: "+memoria)
         memoria = 0
     }//Borra la memoria
+
+    fun calcularBinario(v: View) {
+        deshabilitarBotonesBinario(v)
+    }//Realiza la operacion en binario
+
+    fun deshabilitarBotonesBinario(v: View) {
+        val button2 = findViewById<Button>(R.id.button2)
+        val button3 = findViewById<Button>(R.id.button3)
+        val button4 = findViewById<Button>(R.id.button4)
+        val button5 = findViewById<Button>(R.id.button5)
+        val button6 = findViewById<Button>(R.id.button6)
+        val button7 = findViewById<Button>(R.id.button7)
+        val button8 = findViewById<Button>(R.id.button8)
+        val button9 = findViewById<Button>(R.id.button9)
+        button2.isEnabled=false
+        button3.isEnabled=false
+        button4.isEnabled=false
+        button5.isEnabled=false
+        button6.isEnabled=false
+        button7.isEnabled=false
+        button8.isEnabled=false
+        button9.isEnabled=false
+    }//deshabilita todos los botones menos el 1 y el 0
 
 }//Fin de clase
