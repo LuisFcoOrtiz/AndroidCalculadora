@@ -17,10 +17,11 @@ class MainActivity : AppCompatActivity() {
     var RESULTADOG = "resultadog"
     var MEMORIAG = "memoriag"
     var queHacer=0  //Variable para saber que hacer
-    var valor1=0
+    var valor1=0                    //valores para las operaciones
     var valor2=0
-    var resultado=0
-    var memoria=0
+    var resultado=0                 //resultado de una operacion
+    var memoria=0                   //Memoria de resultado
+    var cambiarBinario=false        //controlador para el binario
     /*1=suma, 2=resta, 3=multiplica*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -147,14 +148,27 @@ class MainActivity : AppCompatActivity() {
         val button7 = findViewById<Button>(R.id.button7)
         val button8 = findViewById<Button>(R.id.button8)
         val button9 = findViewById<Button>(R.id.button9)
-        button2.isEnabled=false
-        button3.isEnabled=false
-        button4.isEnabled=false
-        button5.isEnabled=false
-        button6.isEnabled=false
-        button7.isEnabled=false
-        button8.isEnabled=false
-        button9.isEnabled=false
+        if (cambiarBinario==false) {
+            //Deshabilita los botones
+            habilitarDeshabilitar(false, v)
+            cambiarBinario=true
+
+        } else if (cambiarBinario==true) {
+            //Habilita los botones de nuevo
+            habilitarDeshabilitar(true, v)
+            cambiarBinario=false
+        }
     }//deshabilita todos los botones menos el 1 y el 0
+
+    fun habilitarDeshabilitar(hab: Boolean, v: View) {
+        button2.isEnabled = hab
+        button3.isEnabled = hab
+        button4.isEnabled = hab
+        button5.isEnabled = hab
+        button6.isEnabled = hab
+        button7.isEnabled = hab
+        button8.isEnabled = hab
+        button9.isEnabled = hab
+    }
 
 }//Fin de clase
