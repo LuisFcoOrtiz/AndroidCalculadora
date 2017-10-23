@@ -6,7 +6,11 @@ https://kotlinlang.org/
 
 # Caracteristicas
 *Operaciones simples (Suma, resta, multiplicación, etc)
+
 *Operaciones con variables (Guardado, borrado, Mostrado)
+
 *Operaciones con binarios (conversión, suma, etc)
+
 *Borrado total y parcial de display
+
 *Guardado de estado al cambiar de posición
